@@ -1,0 +1,71 @@
+{
+    "name": "carmelosantana/coqui-toolkit-canva",
+    "description": "Canva Connect API toolkit for Coqui — create designs, manage assets, export files, autofill templates, and more via the Canva REST API.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "coqui",
+        "canva",
+        "design",
+        "assets",
+        "export",
+        "autofill",
+        "brand-templates",
+        "toolkit",
+        "php-agents"
+    ],
+    "authors": [
+        {
+            "name": "Carmelo Santana"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "symfony/http-client": "^7.0"
+    },
+    "require-dev": {
+        "carmelosantana/php-agents": "^0.7",
+        "pestphp/pest": "^3.0",
+        "phpstan/phpstan": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CarmeloSantana\\CoquiToolkitCanva\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CarmeloSantana\\CoquiToolkitCanva\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "php-agents": {
+            "toolkits": [
+                "CarmeloSantana\\CoquiToolkitCanva\\CanvaToolkit"
+            ],
+            "credentials": {
+                "CANVA_CLIENT_ID": "Canva integration Client ID — create one at https://www.canva.com/developers/integrations",
+                "CANVA_CLIENT_SECRET": "Canva integration Client Secret — generate in the Developer Portal integration settings"
+            },
+            "gated": {
+                "canva_auth": ["login", "logout"],
+                "canva_design": ["delete"],
+                "canva_asset": ["delete"],
+                "canva_folder": ["delete"],
+                "canva_autofill": ["create"]
+            }
+        }
+    },
+    "scripts": {
+        "test": "pest",
+        "analyse": "phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
